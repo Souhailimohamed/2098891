@@ -11,7 +11,7 @@ function execute(operation, a, b) {
     case 'MUL':
       return MUL(a, b);
     default:
-      return typeof operation === 'string' ? 'Nom d\'Opération inconnu' : 'Type d\'opération inconnu';
+      return typeof operation === 'string' ? 'Nom d\'opération inconnu' : 'Type d\'opération inconnu';
   }
 }
 
@@ -41,5 +41,5 @@ console.log(execute('ADD', 6, 2));
 console.log(execute('SUB', 6, 2));
 console.log(execute('MUL', 6, 2));
 console.log(execute('DIV', 6, 2));
-console.log(execute('FACT', 6, 2));
+console.log(execute('chaloupe', 6, 2));
 console.log(execute(666, 6, 2));

@@ -4,10 +4,6 @@ function createItem(myText) {
   return "<li>" + myText + "</li>";
 }
 
-/*function createList(items) {
-  
-  return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
-}*/
 
 function createList(items) {
   let myList = '<ul>';
@@ -21,6 +17,6 @@ function createList(items) {
 }
 
 
-window.document.write("<p>Ces listes sont produites dynamiquement.</p>");
-window.document.write("<ul>" + createItem("Item A") + "</ul>");
-window.document.write(createList(["Item1", "Item2", "Item3", "Item4"]));
+document.write("<p>Ces listes sont produites dynamiquement.</p>");
+document.write("<ul>" + createItem("Item A") + "</ul>");
+document.write(createList(["Item1", "Item2", "Item3", "Item4"]));
