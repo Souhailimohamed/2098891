@@ -13,10 +13,14 @@ function execute(operation, a, b) {
     default:
       return typeof operation === 'string' ? 'Nom d\'opération inconnu' : 'Type d\'opération inconnu';
   }
+  
 }
 
 
-const DIV = (a, b) => a / b;
+const DIV = function (a, b) {
+  
+  return a / b
+};
 
 const ADD = function (a, b) {
   
