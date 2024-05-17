@@ -40,36 +40,3 @@ function creeLigneTable() {
   return html;
 }
 document.querySelector('tbody').innerHTML = creeLigneTable();
-
-
-//ca marche:
-
-/*function createRowTable() {
-  return etudiants.map(etudiant => `
-      <tr>
-          <td>${etudiant.id}</td>
-          <td>${etudiant.name}</td>
-          <td>${findTotal(etudiant.id)}</td>
-      </tr>
-  `).join('');
-}
-
-document.querySelector('tbody').innerHTML = creeLigneTable();*/
-
-
-
-/*
-const tableauHTML= `
-            ${etudiants.map(etudiant => `
-                <tr>
-                    <td>${etudiant.id}</td>
-                    <td>${etudiant.name}</td>
-                    <td>${findTotal(etudiant.id)}</td>
-                </tr>
-            `).join('')}
-`;
-
-// Insertion du tableau dans le document
-document.createElement = tableauHTML;
-*/
-
