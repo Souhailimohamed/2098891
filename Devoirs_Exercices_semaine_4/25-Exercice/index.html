@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <canvas id="myCanvas" width="300" height="300"></canvas>
+  <script>
+    
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      // Visage:-----------------------------------
+      var faceX = 50;
+      var faceY = 50;
+      var faceSize = 200;
+
+      context.fillStyle = '#6B8E23';
+      context.fillRect(faceX, faceY, faceSize, faceSize);
+
+      // Yeux: ------------------------------------
+      var eyeWidth = 40;
+      var eyeHeight = 40;
+      var eyeXOffset = 40;
+      var eyeYOffset = 50;
+
+      context.fillStyle = '#ADD8E6'; // Light blue color
+      context.fillRect(faceX + eyeXOffset, faceY + eyeYOffset, eyeWidth, eyeHeight);
+      context.fillRect(faceX + faceSize - eyeXOffset - eyeWidth, faceY + eyeYOffset, eyeWidth, eyeHeight);
+
+      // Bouche : ----------------------------------
+      var mouthWidth = 120;
+      var mouthHeight = 30;
+      var mouthYOffset = 120;
+
+      context.fillStyle = '#FFB6C1';
+      context.fillRect(faceX + (faceSize - mouthWidth) / 2, faceY + mouthYOffset, mouthWidth, mouthHeight);
+      
+  </script>
+  
+</body>
+</html>

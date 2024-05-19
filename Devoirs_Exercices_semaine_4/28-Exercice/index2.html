@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>
+      b) Faire voguer votre bateau, du côté gauche jusqu’au côté droit de votre
+      écran.
+    </h1>
+
+    <canvas id="myCanvas" width="1000" height="700"></canvas>
+
+    <script>
+      var canvas;
+      var ctx;
+      var x = -200;
+      var dx = 2;
+      var waveOffset = 0;
+      var amplitude = 20;
+      var frequency = 0.05;
+
+      function init() {
+        canvas = document.getElementById("myCanvas");
+        ctx = canvas.getContext("2d");
+        return setInterval(draw, 10);
+      }
+
+      function draw() {
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var y = amplitude * Math.sin(frequency * x) + 20;
+
+
+        //Dessiner les vagues : 
+        ctx.beginPath();
+        for (var a = 0; a < canvas.width; a++) {
+          var b = amplitude * Math.sin(frequency * a + waveOffset) + 300;
+          ctx.lineTo(a, b);
+        }
+        ctx.lineTo(canvas.width, canvas.height );
+        ctx.lineTo(0, canvas.height);
+        ctx.closePath();
+        ctx.fillStyle = "#1ae8e5";
+        ctx.fill();
+
+        //Animer les vagues :
+
+        waveOffset += 0.1;
+
+
+        // Dessiner baton vertical:
+
+        ctx.beginPath();
+        ctx.moveTo(x + 135, y + 60);
+        ctx.lineTo(x + 135, y + 260);
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = "sienna";
+        ctx.stroke();
+        ctx.closePath();
+
+        // Dessiner du corps du bateau :
+
+        ctx.beginPath();
+        ctx.moveTo(x + 60, y + 260);
+        ctx.lineTo(x + 90, y + 300);
+        ctx.lineTo(x + 250, y + 300);
+        ctx.lineTo(x + 290, y + 260);
+        ctx.closePath();
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "sienna";
+        ctx.stroke();
+        ctx.fillStyle = "peru";
+        ctx.fill();
+
+        // Dessiner la voile du bateau
+
+        ctx.beginPath();
+        ctx.moveTo(x + 150, y + 80);
+        ctx.lineTo(x + 300, y + 230);
+        ctx.lineTo(x + 150, y + 230);
+        ctx.closePath();
+        ctx.fillStyle = "lightblue";
+        ctx.fill();
+      
+        //Mouvement du bateau : 
+        x += dx;
+
+        if (x + 60 > canvas.width) {
+          x = -200;
+        }
+
+      }
+
+      init();
+
+    </script>
+  </body>
+</html>

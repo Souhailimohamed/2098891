@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="code.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="400">
+  </canvas>
+
+<script>
+var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        // Dessin de visage
+        var centerX = 150;
+        var centerY = 150;
+        var faceRadius = 100;
+
+        context.beginPath();
+        context.arc(centerX, centerY, faceRadius, 0, 2 * Math.PI, false);
+        context.fillStyle = '#FFDDC1';
+        context.fill();
+        context.lineWidth = 5;
+        context.strokeStyle = '#FFA07A';
+        context.stroke();
+        context.closePath();
+
+        // Dessin des yeux
+
+        var eyeRadius = 15;
+        var eyeXOffset = 30;
+        var eyeYOffset = 20;
+
+        context.beginPath();
+        context.arc(centerX - eyeXOffset, centerY - eyeYOffset, eyeRadius, 0, 2 * Math.PI, false);
+        context.lineWidth = 4;
+        context.strokeStyle = '#4682B4';
+        context.stroke();
+        context.closePath();
+
+
+        context.beginPath();
+        context.arc(centerX + eyeXOffset, centerY - eyeYOffset, eyeRadius, 0, 2 * Math.PI, false);
+        context.lineWidth = 4;
+        context.strokeStyle = '#4682B4';
+        context.stroke();
+        context.closePath();
+
+
+        // Dessin bouche
+
+        var mouthRadius = 60;
+        var mouthYOffset = 10;
+
+        context.beginPath();
+        context.arc(centerX, centerY + mouthYOffset, mouthRadius, 0, Math.PI, false);
+        context.lineWidth = 5;
+        context.strokeStyle = '#FF0000';
+        context.stroke();
+        context.closePath();
+
+</script>
+
+</body>
+</html>
