@@ -1,7 +1,7 @@
 // premierement je cree un gestionnaire d evenement qui se declanche lorsque notre page a ete completement chargee.
 
 document.addEventListener("DOMContentLoaded", () => {
-  // on identifie nos champs avec leurs id deja predefinit dans le fichier html  et en les enregistes dans des constantes pr faciliter leurs manipulation.
+  // on identifie nos champs avec leurs id deja predefinit dans le fichier html  et on les enregistes dans des constantes pr faciliter leurs manipulation.
 
   const taskInput = document.getElementById("taskInput");
   const addButton = document.getElementById("addButton");
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ensuite en integre ce code qui nous permet de Positionner le curseur dans le champ taskInput à l'ouverture de la page
   taskInput.focus();
 
-  // Ensuite on integre ce gestionnaire d evenement qui nous permet d'ctiver ou de désactiver le bouton "Ajout" en fonction de l'entrée
+  // Ensuite on integre ce gestionnaire d evenement qui nous permet d'ctiver ou de désactiver le bouton "Ajout" en fonction de saisie du texte dans le taskInput
   // par defaut le button est desactive durant sa creation dans le fichier html.
 
   taskInput.addEventListener("input", () => {
@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ).length;
       });
 
-
       // On cree un élément span pour contenir le texte de la tâche
       const span = document.createElement("span");
       span.textContent = taskText;
@@ -60,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       taskInput.value = "";
       addButton.disabled = true;
       deleteButton.disabled = true;
+      majTaskTotal(); // on appelle cette fonction pour calculer la somme des taches;
     }
   }
 
@@ -75,29 +75,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // un premier test de mon code a ete realise ici avec succes ********************
 
+  // On definit mtn le gestionnaire d 'evenement pour Supprimer les tâches sélectionnées lorsqu on clique sur le boutton deleteButton
+  deleteButton.addEventListener("click", () => {
+    // on verifie ici les element selectionnes de la liste
+    const checkedItems = document.querySelectorAll(
+      '#taskList input[type="checkbox"]:checked'
+    );
+    // ensuite on les supprime
+    checkedItems.forEach((item) => item.parentElement.remove());
+    // et on desactive le button deleteButton
+    deleteButton.disabled = true;
+    majTaskTotal(); //on appelle la fonction pour calculer la somme apres suppession des taches;
+  });
 
-// On definit mtn le gestionnaire d ' evenement pour Supprimer les tâches sélectionnées lorsqu on clique sur le boutton deleteButton
-deleteButton.addEventListener('click', () => {
-// on verifie ici les element selectionnes de la liste 
-  const checkedItems = document.querySelectorAll('#taskList input[type="checkbox"]:checked'); 
-// ensuite on les supprime
-  checkedItems.forEach(item => item.parentElement.remove());
-  // et on desactive le button deleteButton
+  
+  // on initialise l'état des boutons et le nombre total de tâches
+
+  addButton.disabled = true;
   deleteButton.disabled = true;
-
-});
-
+  majTaskTotal();
 
 
-// on initialise l'état des boutons
+  // Fonction pour mettre à jour le nombre total de tâches
 
-addButton.disabled = true;
-deleteButton.disabled = true;
-
-
-// il reste le update de taskTotal pr calculer la somme des taches qu on a 
+  function majTaskTotal() {
+    taskTotal.textContent = `(${taskList.children.length})`;
+  }
 
 
 
 });
-
