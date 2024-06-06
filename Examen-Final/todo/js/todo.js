@@ -38,12 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
         ).length;
       });
 
+
       // On cree un élément span pour contenir le texte de la tâche
       const span = document.createElement("span");
       span.textContent = taskText;
 
-      // Ajoute un événement pour barrer le texte lorsque l'on clique dessus
-      span.addEventListener("click", () => {
+      // Ajoute un événement pour barrer le texte lorsque l'on clique sur le checkbox
+      checkbox.addEventListener("click", () => {
         span.classList.toggle("strike-task");
       });
 
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // on definit ici levenement declancher lorsqu'on clique sur le bouton "Ajout" qui est la fonction atouterTache
+  // on definit ici l evenement declancher lorsqu'on clique sur le bouton "Ajout" qui est la fonction atouterTache
   addButton.addEventListener("click", ajouterTache);
 
   // on definit ici levenement declancher lorsqu'on appuie sur la touche "Enter"
@@ -75,6 +76,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // un premier test de mon code a ete realise ici avec succes ********************
 
 
+// On definit mtn le gestionnaire d ' evenement pour Supprimer les tâches sélectionnées lorsqu on clique sur le boutton deleteButton
+deleteButton.addEventListener('click', () => {
+// on verifie ici les element selectionnes de la liste 
+  const checkedItems = document.querySelectorAll('#taskList input[type="checkbox"]:checked'); 
+// ensuite on les supprime
+  checkedItems.forEach(item => item.parentElement.remove());
+  // et on desactive le button deleteButton
+  deleteButton.disabled = true;
+
+});
+
+
+
+// on initialise l'état des boutons
+
+addButton.disabled = true;
+deleteButton.disabled = true;
+
+
+// il reste le update de taskTotal pr calculer la somme des taches qu on a 
+
 
 
 });
+
