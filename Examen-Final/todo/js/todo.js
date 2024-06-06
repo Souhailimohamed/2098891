@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     majTaskTotal(); //on appelle la fonction pour calculer la somme apres suppession des taches;
   });
 
-  
+
   // on initialise l'état des boutons et le nombre total de tâches
 
   addButton.disabled = true;
@@ -102,6 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
     taskTotal.textContent = `(${taskList.children.length})`;
   }
 
-
+// un test final a ete effectue pour assurer le bon fonctionnement de mon code ***************************
 
 });
